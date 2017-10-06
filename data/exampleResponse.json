@@ -1,0 +1,50 @@
+{
+  "Disclaimer": "Response format subject to change",
+  "References": {
+    "BookingId": "BNBASE001",
+    "ContainerId": "CNBASE001",
+    "ParentDocument": {
+      "Id": "VGM-EXAMPLE-BASE1",
+      "Type": "VERMAS",
+      "SenderId": "INTERWEIGHT"
+    },
+    "TopicId": "we-will-add-a-topic-guid-later"
+  },
+  "Submitter": {
+    "Party": {
+      "PartyTypeCode": "Carrier",
+      "Name": "GLOMA",
+      "SCAC": "MSCU",
+      "EORI": "EORI"
+    }
+  },
+  "VerifiedGrossMass": {
+    "Value": "12500",
+    "Uom": "KGM",
+    "WeighingDate": "2017-08-12",
+    "WeighingTime": "14:07:00",
+    "VerificationMethod": "SM1"
+  },
+  "Seals": [
+    {
+      "SealPartyTypeCode": "Unknown",
+      "SealNumber": "111"
+    }
+  ],
+  "Parties": [
+    {
+      "PartyTypeCode": "ResponsibleParty",
+      "Name": "Interweight NV"
+    },
+    {
+      "PartyTypeCode": "AuthorizedOfficial",
+      "Name": "Jean Barre",
+      "Contacts": [
+        {
+          "ContactTypeCode": "AuthorizedResponsiblePerson",
+          "Name": "Nicolas Dupont"
+        }
+      ]
+    }
+  ]
+}
