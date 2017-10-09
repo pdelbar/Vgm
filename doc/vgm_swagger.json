@@ -1,0 +1,245 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "NxtPort VGM API - sandbox edition",
+    "description": "The VGM API provides information about the verified gross mass of a container currently used in an export flow, as provided by certified weighing stations.",
+    "termsOfService": "http://nxtport.eu/"
+  },
+  "basePath": "/",
+  "paths": {
+    "/v1/info": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "Retrieve VGM information",
+        "operationId": "V1InfoGet",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "bn",
+            "in": "query",
+            "description": "Booking reference which currently uses this container",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "cn",
+            "in": "query",
+            "description": "Container reference for which VGM is requested",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ContainerWeightInfo"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/v1/info/{bn}/{cn}": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "Retrieve VGM information",
+        "operationId": "V1InfoByBnByCnGet",
+        "consumes": [],
+        "produces": [
+          "application/xml",
+          "text/xml",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "bn",
+            "in": "path",
+            "description": "Booking reference which currently uses this container",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cn",
+            "in": "path",
+            "description": "Container reference for which VGM is requested",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ContainerWeightInfo"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ContainerWeightInfo": {
+      "type": "object",
+      "properties": {
+        "disclaimer": {
+          "type": "string"
+        },
+        "references": {
+          "$ref": "#/definitions/References"
+        },
+        "submitter": {
+          "$ref": "#/definitions/Submitter"
+        },
+        "verifiedGrossMass": {
+          "$ref": "#/definitions/VerifiedGrossMass"
+        },
+        "seals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Seal"
+          }
+        },
+        "parties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Party"
+          }
+        }
+      }
+    },
+    "References": {
+      "type": "object",
+      "properties": {
+        "bookingId": {
+          "type": "string"
+        },
+        "containerId": {
+          "type": "string"
+        },
+        "parentDocument": {
+          "$ref": "#/definitions/ParentDocument"
+        }
+      }
+    },
+    "Submitter": {
+      "type": "object",
+      "properties": {
+        "party": {
+          "$ref": "#/definitions/Party"
+        }
+      }
+    },
+    "VerifiedGrossMass": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "uom": {
+          "type": "string"
+        },
+        "weighingDate": {
+          "type": "string"
+        },
+        "weighingTime": {
+          "type": "string"
+        },
+        "verificationMethod": {
+          "type": "string"
+        }
+      }
+    },
+    "Seal": {
+      "type": "object",
+      "properties": {
+        "sealPartyTypeCode": {
+          "type": "string"
+        },
+        "sealNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "Party": {
+      "type": "object",
+      "properties": {
+        "partyTypeCode": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "scac": {
+          "type": "string"
+        },
+        "eori": {
+          "type": "string"
+        },
+        "streetAndNumber": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "place": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "unstructuredAddress": {
+          "type": "string"
+        },
+        "contacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Contact"
+          }
+        }
+      }
+    },
+    "ParentDocument": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "senderId": {
+          "type": "string"
+        }
+      }
+    },
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "contactTypeCode": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

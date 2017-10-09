@@ -2,14 +2,14 @@
 
 We've created sample data for the sandbox edition of this API. The description of the examples is below.  
 
-## Sandbox Example 1
+## Sandbox example 1
 
 Basic example with container weight information
 
     Booking number = "BNBASE001" (bn)
     Container reference = "CNBASE001" (cn)
 
-## Sandbox Example 1
+## Sandbox example 2
 
 Basic example with container weight information
 
